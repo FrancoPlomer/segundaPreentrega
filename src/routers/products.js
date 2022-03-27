@@ -5,9 +5,10 @@ import productosApiFirebase from "../daos/products/productsDaoFirebase.js";
 import 'dotenv/config';
 
 
+
 const selectDao = (db) => {
     switch (db) {
-        case "sql":
+        case "mongo":
             return productsApiMongo;
         case "archivo":
             return productsApiFile;
@@ -17,6 +18,7 @@ const selectDao = (db) => {
             break;
     }
 }
+
 
 const products = selectDao(process.env.DB) 
 const productsApiRouter = new Router();
@@ -69,6 +71,7 @@ productsApiRouter.put('/:id', async (req, res) => {
         try {
             res.json(await products.update({ ...req.body, id: req.params.id }))
         } catch (error) {
+            console.log(error)
             res.json({
                 err: -1,
                 message: error

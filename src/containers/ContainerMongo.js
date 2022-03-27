@@ -47,7 +47,7 @@ export class ContainerProductsMongo {
 
     async update(product) {
         const productUpdate = await productsModel.products.updateOne({id: product.id}, {
-            $set: elemento
+            $set: product
         })
         return productUpdate;
     }
