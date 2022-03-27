@@ -110,6 +110,7 @@ productsApiRouter.delete('/', async (req, res) => {
         try {
             res.json(await products.deleteAll())
         } catch (error) {
+            console.log(error)
             res.json({
                 err: -1,
                 message: error

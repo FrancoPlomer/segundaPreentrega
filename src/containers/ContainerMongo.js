@@ -58,7 +58,7 @@ export class ContainerProductsMongo {
     }
 
     async deleteAll() {
-        const productoDeleteAll = await productsModel.productos.deleteMany({})
+        const productoDeleteAll = await productsModel.products.deleteMany({})
         return productoDeleteAll;
     }
 
